@@ -1,0 +1,54 @@
+from sqlalchemy import create_engine, text
+import pandas as pd
+
+# Create an engine and connect to the database
+engine = create_engine('sqlite:///data/vivino.db')
+connection = engine.connect()
+
+# Fetch the list of tables in the database using text()
+tables_query = text("SELECT name FROM sqlite_master WHERE type='table';")
+tables = connection.execute(tables_query).fetchall()
+
+# Fetch top 10 vintages based on average rating and ratings count using text()
+top_rated_vintages_query = text("""
+SELECT 
+    v.id AS vintage_id, 
+    v.name AS vintage_name, 
+    w.name AS wine_name, 
+    v.ratings_average, 
+    v.ratings_count, 
+    v.price_euros, 
+    v.price_discounted_from, 
+    v.price_discount_percentage, 
+    v.bottle_volume_ml 
+FROM 
+    vintages v 
+JOIN 
+    wines w ON v.wine_id = w.id 
+ORDER BY 
+    v.ratings_average DESC, 
+    v.ratings_count DESC 
+LIMIT 10
+""")
+top_rated_vintages = connection.execute(top_rated_vintages_query).fetchall()
+
+# Convert the fetched data into a list of dictionaries using positional indexing
+top_rated_vintages_list = [
+    {
+        "vintage_id": row[0],
+        "vintage_name": row[1],
+        "wine_name": row[2],
+        "ratings_average": row[3],
+        "ratings_count": row[4],
+        "price_euros": row[5],
+        "price_discounted_from": row[6],
+        "price_discount_percentage": row[7],
+        "bottle_volume_ml": row[8]
+    }
+    for row in top_rated_vintages
+]
+
+# Close the connection
+connection.close()
+
+print(tables, top_rated_vintages_list)
