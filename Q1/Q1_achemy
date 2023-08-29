@@ -1,0 +1,74 @@
+# Required libraries
+from sqlalchemy import create_engine, text
+from sqlalchemy.exc import SQLAlchemyError
+import pandas as pd
+
+try:
+    # Create an engine to connect to the SQLite database
+    engine = create_engine('sqlite:///data/vivino.db')
+    connection = engine.connect()
+
+    # Query to fetch the list of tables in the database
+    tables_query = text("SELECT name FROM sqlite_master WHERE type='table';")
+    # Execute the query and fetch all table names
+    tables = connection.execute(tables_query).fetchall()
+
+    # Query to fetch the top 10 vintages based on average rating and ratings count
+    top_rated_vintages_query = text("""
+    SELECT 
+        vintage.id AS vintage_id, 
+        vintage.name AS vintage_name, 
+        wine.name AS wine_name, 
+        vintage.ratings_average, 
+        vintage.ratings_count, 
+        vintage.price_euros, 
+        vintage.price_discounted_from, 
+        vintage.price_discount_percentage, 
+        vintage.bottle_volume_ml 
+    FROM 
+        vintages vintage
+    JOIN 
+        wines wine ON vintage.wine_id = wine.id 
+    ORDER BY 
+        vintage.ratings_average DESC, 
+        vintage.ratings_count DESC 
+    LIMIT 10
+    """)
+    # Execute the query and fetch top rated vintages
+    top_rated_vintages = connection.execute(top_rated_vintages_query).fetchall()
+
+    # Convert the fetched data into a list of dictionaries using positional indexing
+    top_rated_vintages_list = [
+        {
+            "vintage_id": row[0],
+            "vintage_name": row[1],
+            "wine_name": row[2],
+            "ratings_average": row[3],
+            "ratings_count": row[4],
+            "price_euros": row[5],
+            "price_discounted_from": row[6],
+            "price_discount_percentage": row[7],
+            "bottle_volume_ml": row[8]
+        }
+        for row in top_rated_vintages
+    ]
+
+    # Convert the list of dictionaries into a pandas DataFrame
+    top_rated_vintages_df = pd.DataFrame(top_rated_vintages_list)
+
+    # Save the DataFrame to a CSV file
+    csv_file_path = "data/top_rated_vintages.csv"
+    top_rated_vintages_df.to_csv(csv_file_path, index=False)
+
+    csv_file_path
+
+    # Close the connection to the database
+    connection.close()
+    
+    print(tables, top_rated_vintages_list)
+    
+except SQLAlchemyError as e:
+    print(f"An error occurred: {e}")
+    # Optionally, you can close the connection here if it was opened
+    if 'connection' in locals():
+        connection.close()
