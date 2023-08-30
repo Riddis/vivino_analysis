@@ -1,1 +1,3 @@
-vivino.db
+data/vivino.db
+vivino_env
+__pychache__
