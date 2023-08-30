@@ -1,14 +1,16 @@
-import streamlit.streamlit as st
+import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import sqlite3
 import seaborn as sns
 
-
-
 # Connect to the SQLite database
-connection = sqlite3.connect('./vivino.db')
+connection = sqlite3.connect('../vivino.db')
 cursor = connection.cursor()
+
+st.set_page_config(page_title = 'vivino', page_icon = '🍷')
+st.title ('Visualisation on Vivino')
+
 
 def heatmap_for_grape():
     st.header('Usage of top 5 grapes accross countries')
@@ -149,11 +151,15 @@ def barchart_for_countries_WinesVintageCount():
         st.pyplot(plt)
   
 
-if __name__ == '__main__':
-    st.set_page_config(page_title = 'vivino', page_icon = '🍷')
-    st.title ('visualisation on Vivino')
-    choice = st.radio('Choose one to visualise',['Usage of top 5 grapes accross countries',
-                                                       'Wines, Vintage and total wines count of each countries'])
+sidebar = st.sidebar.radio('Select one of the options to view :', ["Contents","Oleksandr", "Sam H", "Mythili"])
+
+if sidebar == "Contents":
+    st.subheader("welcome to project Vivino")
+    
+
+if sidebar == "Mythili":
+    choice = st.selectbox('Choose one to visualise',['Usage of top 5 grapes accross countries',
+                                                    'Wines, Vintage and total wines count of each countries'])
 
     if choice == 'Usage of top 5 grapes accross countries':
         heatmap_for_grape()
