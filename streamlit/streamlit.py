@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import sqlite3
 import seaborn as sns
+import sqlite3
 
 # Connect to the SQLite database
 connection = sqlite3.connect('../vivino.db')
@@ -150,18 +150,61 @@ def barchart_for_countries_WinesVintageCount():
         plt.ylim(0,20)
         st.pyplot(plt)
   
+def ratings_of_top15wines():
+    q1 = '''SELECT name , ratings_average
+       FROM Cabernet_Sauvignon
+       ORDER BY ratings_average DESC
+       LIMIT 5'''
+    q2 = '''SELECT name , ratings_average
+        FROM Chardonnay
+        ORDER BY ratings_average DESC
+        LIMIT 5'''
+    q3 = '''SELECT name , ratings_average
+        FROM Pinot_Noir
+        ORDER BY ratings_average DESC
+        LIMIT 5'''
+
+    queries = [q1, q2, q3]
+    grape_names = ['Cabernet Sauvignon', 'Chardonnay', 'Pinot Noir']
+
+    dataframes = []
+
+    for i, query in enumerate(queries):
+        results = cursor.execute(query).fetchall()
+        df = pd.DataFrame(results, columns=['Wine Name', 'Ratings Average'])
+        df['Grape'] = grape_names[i]
+        dataframes.append(df)
+
+    # Combine the DataFrames into a single DataFrame
+    combined_df = pd.concat(dataframes, ignore_index=True)
+
+    sns.barplot(data=combined_df, x='Wine Name', y='Ratings Average', hue='Grape')
+    plt.xlabel('Wine Name')
+    plt.ylabel('Ratings Average')
+    plt.title('Top Rated Wines by Grape')
+    plt.xticks(rotation=90)
+    st.pyplot(plt)
+
+    rating_4_5 = st.button('click to see ratings from 4 to 5 specifically')
+
+    if rating_4_5:
+        plt.ylim(4, 5)
+        st.pyplot(plt)
 
 sidebar = st.sidebar.radio('Select one of the options to view :', ["Contents","Oleksandr", "Sam H", "Mythili"])
 
 if sidebar == "Contents":
     st.subheader("welcome to project Vivino")
-    
+
 
 if sidebar == "Mythili":
     choice = st.selectbox('Choose one to visualise',['Usage of top 5 grapes accross countries',
-                                                    'Wines, Vintage and total wines count of each countries'])
+                                                    'Wines, Vintage and total wines count of each countries',
+                                                    'Ratings of top 15 wines of top 3 grapes'])
 
     if choice == 'Usage of top 5 grapes accross countries':
         heatmap_for_grape()
     elif choice == 'Wines, Vintage and total wines count of each countries':
         barchart_for_countries_WinesVintageCount()
+    elif choice == 'Ratings of top 15 wines of top 3 grapes':
+        ratings_of_top15wines()
