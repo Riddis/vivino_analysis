@@ -1,2 +1,5 @@
-__pycache__
+data/vivino.db
+vivino_env
+__pychache__
 vivino.db
+question_3/vivino.db
