@@ -1,3 +1,4 @@
+![wine](./assets/wine.jpg)
 # wine_market_analysis - vivino
 This project is a part of AI Bootcamp in Gent @ BeCode.org.
 
