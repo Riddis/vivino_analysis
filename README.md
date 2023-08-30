@@ -16,6 +16,9 @@ This project is a part of AI Bootcamp in Gent @ BeCode.org.
 * clone this repository
 * use `pip install <module name>` to install the required models
 
+# Reference
+![DB](./assets/vivino_db_diagram_horizontal.png)
+
 * # Usage
 * open the terminal and redirect to where your repository is.
 
