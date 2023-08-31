@@ -14,7 +14,7 @@ This project is a part of AI Bootcamp in Gent @ BeCode.org.
 [![Tableau](https://img.shields.io/badge/Tableau-orange)](https://www.tableau.com/)
 
 * clone this repository
-* use `pip install <module name>` to install the required models
+* use `pip install requirements.txt` to install the required models
 
 # Reference
 ![DB](./assets/vivino_db_diagram_horizontal.png)
