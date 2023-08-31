@@ -74,7 +74,7 @@ def heatmap_for_grape(cursor):
     st.pyplot(plt)
 
 def ratings_of_top15wines(cursor):
-    # question 3 - second part - ratings of top 15 wines (of top 3 grapes each)
+    # question 6 - second part - ratings of top 15 wines (of top 3 grapes each)
     q1 = '''SELECT name , ratings_average
        FROM Cabernet_Sauvignon
        ORDER BY ratings_average DESC
