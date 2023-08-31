@@ -208,3 +208,7 @@ if sidebar == "Mythili":
         barchart_for_countries_WinesVintageCount()
     elif choice == 'Ratings of top 15 wines of top 3 grapes':
         ratings_of_top15wines()
+
+# closing database
+cursor.close()
+connection.close()
