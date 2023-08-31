@@ -5,6 +5,7 @@ import seaborn as sns
 from sqlalchemy import create_engine, text
 from matplotlib import pyplot as plt
 from matplotlib.ticker import ScalarFormatter, MaxNLocator
+import streamlit.components.v1 as components
 
 def heatmap_for_grape(cursor):
     st.header('Usage of top 5 grapes accross countries')
@@ -361,11 +362,102 @@ def wine_flavor(engine):
     else:
         st.write("No results match the selected keywords.")
 
-def tableau():
-    slide = "<div class='tableauPlaceholder' id='viz1693474878883' style='position: relative'><noscript><a href='#'><img alt='Sheet 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;te&#47;testing_16934748641800&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='testing_16934748641800&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;te&#47;testing_16934748641800&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1693474878883');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>"
+def top_ten_wines():
+    st.markdown(
+    """
+        <style>
+            .block-container {
+            max-width: 100%;
+            }
+            .css-1y4p8pa {
+            padding: 0
+        </style>
+    """,
+        unsafe_allow_html=True,
+    )
+    slide = "<div class='tableauPlaceholder' id='viz1693476912469' style='position: relative'><noscript><a href='#'><img alt='10 wines to increase our sales ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;Top10Winestoincreaseoursales&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Top10Winestoincreaseoursales&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;Top10Winestoincreaseoursales&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1693476912469');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>"
 
-    import streamlit.components.v1 as components
+    components.html(
+        slide, width=1000, height=300
+    )
+
+    slide2 = "<div class='tableauPlaceholder' id='viz1693477582213' style='position: relative'><noscript><a href='#'><img alt='Sheet 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Mapfromwhichcoutrysthiswinefromwithaverageprice&#47;Sheet2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Mapfromwhichcoutrysthiswinefromwithaverageprice&#47;Sheet2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Mapfromwhichcoutrysthiswinefromwithaverageprice&#47;Sheet2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1693477582213');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>"
+    components.html(
+        slide2, width=1000, height=1000
+    )
+
+def rating_by_country():
+    st.markdown(
+    """
+        <style>
+            .block-container {
+            max-width: 100%;
+            }
+            .css-1y4p8pa {
+            padding: 0
+        </style>
+    """,
+        unsafe_allow_html=True,
+    )
+    slide = "<div class='tableauPlaceholder' id='viz1693484658147' style='position: relative'><noscript><a href='#'><img alt='Average Rating by Country: A Global Perspective ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;MapTopByCountry&#47;Sheet2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='MapTopByCountry&#47;Sheet2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;MapTopByCountry&#47;Sheet2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1693484658147');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>"
 
     components.html(
         slide, width=1000, height=1000
     )
+
+def rating_by_year():
+    st.markdown(
+    """
+        <style>
+            .block-container {
+            max-width: 100%;
+            }
+            .css-1y4p8pa {
+            padding: 0
+        </style>
+    """,
+        unsafe_allow_html=True,
+    )
+    slide = "<div class='tableauPlaceholder' id='viz1693484925098' style='position: relative'><noscript><a href='#'><img alt='Rating by Vintages Year ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingByVintagesYear&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='RatingByVintagesYear&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingByVintagesYear&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1693484925098');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>"
+
+    components.html(
+        slide, width=1000, height=1000
+    )
+
+def vip():
+    st.markdown(
+    """
+        <style>
+            .block-container {
+            max-width: 100%;
+            }
+            .css-1y4p8pa {
+            padding: 0
+        </style>
+    """,
+        unsafe_allow_html=True,
+    )
+    slide = "<div class='tableauPlaceholder' id='viz1693485024241'style='position: relative'><noscript><a href='#'><img alt='Top 5 Wines for VIP client  that have &quot;Cabernet Sauvignon&quot; in their names ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Bu&#47;Buble_16934768498600&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Buble_16934768498600&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Bu&#47;Buble_16934768498600&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1693485024241');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>"
+
+    components.html(
+        slide, width=1000, height=1000
+    )
+
+def end():
+    st.write('# Thank you for your time')
+    value = st.slider('How much do you like wine', 0, 100)
+    if value <= 25:
+        like = st.button('I do not like wine')
+        dont_drink = st.button('I do not drink wine')
+        if like:
+            st.write("That's interesting!")
+        elif dont_drink:
+            st.write("I appretiate your honesty")
+    elif value > 25 and value <= 75:
+        occasion = st.button('I drink wine occationaly')
+        if occasion:
+            st.write('Good for you!')
+    elif value > 75:
+        always = ("I drink wine on daily basis")
+        if always:
+            st.write("Go wine! Go wild!")

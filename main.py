@@ -27,7 +27,10 @@ choice = st.sidebar.radio('Choose one to visualise',['Contents',
                                             'Ratings of top 15 wines',
                                             'Marketing budget', 
                                             'Wines per flavor',
-                                            'Tableau test', 
+                                            'Top 10 wines',
+                                            'Average rating per country',
+                                            'Average rating by year',
+                                            'Top 5 for VIP',
                                             'The End'
                                             ])
 st.write(" ")
@@ -49,26 +52,16 @@ elif choice == 'Marketing budget':
     queries.marketing_budget(engine)
 elif choice == 'Wines per flavor':
     queries.wine_flavor(engine)
-elif choice == 'Tableau test':
-    queries.tableau()
+elif choice == 'Top 10 wines':
+    queries.top_ten_wines()
+elif choice == 'Average rating per country':
+    queries.rating_by_country()
+elif choice == 'Average rating by year':
+    queries.rating_by_year()
+elif choice == 'Top 5 for VIP':
+    queries.vip()
 elif choice == 'The End':
-    st.write('# Thank you for your time')
-    value = st.slider('How much do you like wine', 0, 100)
-    if value <= 25:
-        like = st.button('I do not like wine')
-        dont_drink = st.button('I do not drink wine')
-        if like:
-            st.write("That's interesting!")
-        elif dont_drink:
-            st.write("I appretiate your honesty")
-    elif value > 25 and value <= 75:
-        occasion = st.button('I drink wine occationaly')
-        if occasion:
-            st.write('Good for you!')
-    elif value > 75:
-        always = ("I drink wine on daily basis")
-        if always:
-            st.write("Go wine! Go wild!")
+    queries.end()
 
 # closing vivino_new.db connections
 cursor.close()
