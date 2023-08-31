@@ -89,9 +89,14 @@ The project consists of three main parts:
 2. Execute the desired scripts or applications.
 
 ## 🏁 Completion
-- **Team**: Oleksandr, Sam H, Mythili Palanisamy
-- **Repository**: Price_prediction
-- **Submission**: 31/08/2023, 4:00 PM
+**Team**: 
+- [Mythili Palanisamy](https://www.linkedin.com/in/mythili-palanisamy-492147159)
+- [Oleksandr Tsepukh](https://www.linkedin.com/in/oleksandr-tsepukh-ba4985279)
+- [Sam Hoste](https://www.linkedin.com/in/sam-hoste-15610945)
+
+**Repository**: Price_prediction
+
+**Submission**: 31/08/2023, 4:30 PM
 
 ## 🙏 Acknowledgements
 We would like to thank BeCode for providing us with this opportunity to work on this project. We would also like to thank our coaches and mentors for their guidance and support. Finally, we would like to thank our fellow learners for their feedback and collaboration.
