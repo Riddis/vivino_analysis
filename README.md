@@ -82,8 +82,8 @@ The project consists of three main parts:
 
 | Platform | Description |
 | -------- | ----------- |
-| **Streamlit Dashboard** | An interactive platform permitting users to delve deep into the data. Ex: ![map](./assets/map.png) |
-| **Tableau Dashboard** | A visual representation of data insights and findings. ![Tableau dashboard] |
+| **Streamlit Dashboard** | An interactive platform permitting users to delve deep into the data. ![map](./assets/streamlit.png) |
+| **Tableau Dashboard** | A visual representation of data insights and findings. Ex: ![map](./assets/map.png) |
 
 <a name="database-schema"></a>
 ## 📈 Database Schema
@@ -92,7 +92,7 @@ The project consists of three main parts:
 <a name="usage"></a>
 ## 🎮 Usage
 1. Navigate to the repository's directory in your terminal.
-2. Execute the desired scripts or applications.
+2. Execute 'streamlit run c:/PATHTOFILE/main.py'
 
 <a name="completion"></a>
 ## 🏁 Completion
