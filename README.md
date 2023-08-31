@@ -82,7 +82,7 @@ The project consists of three main parts:
 
 | Platform | Description |
 | -------- | ----------- |
-| **Streamlit Dashboard** | An interactive platform permitting users to delve deep into the data. ![Streamlit dashboard] |
+| **Streamlit Dashboard** | An interactive platform permitting users to delve deep into the data. Ex: ![map](./assets/map.png) |
 | **Tableau Dashboard** | A visual representation of data insights and findings. ![Tableau dashboard] |
 
 <a name="database-schema"></a>
