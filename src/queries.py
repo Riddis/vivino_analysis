@@ -3,11 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sqlalchemy import create_engine, text
+from matplotlib import pyplot as plt
 from matplotlib.ticker import ScalarFormatter, MaxNLocator
 
 def heatmap_for_grape(cursor):
-    # this heatmap has countries that uses top 5 grapes 
-    # part of question 3 - (1st half) finding top 3 grapes (i took top 5)
     st.header('Usage of top 5 grapes accross countries')
 
     queries = {
@@ -73,9 +72,50 @@ def heatmap_for_grape(cursor):
     # Display the chart
     st.pyplot(plt)
 
+def ratings_of_top15wines(cursor):
+    # question 3 - second part - ratings of top 15 wines (of top 3 grapes each)
+    q1 = '''SELECT name , ratings_average
+       FROM Cabernet_Sauvignon
+       ORDER BY ratings_average DESC
+       LIMIT 5'''
+    q2 = '''SELECT name , ratings_average
+        FROM Chardonnay
+        ORDER BY ratings_average DESC
+        LIMIT 5'''
+    q3 = '''SELECT name , ratings_average
+        FROM Pinot_Noir
+        ORDER BY ratings_average DESC
+        LIMIT 5'''
+
+    queries = [q1, q2, q3]
+    grape_names = ['Cabernet Sauvignon', 'Chardonnay', 'Pinot Noir']
+
+    dataframes = []
+
+    for i, query in enumerate(queries):
+        results = cursor.execute(query).fetchall()
+        df = pd.DataFrame(results, columns=['Wine Name', 'Ratings Average'])
+        df['Grape'] = grape_names[i]
+        dataframes.append(df)
+
+    # Combine the DataFrames into a single DataFrame
+    combined_df = pd.concat(dataframes, ignore_index=True)
+
+    sns.barplot(data=combined_df, x='Wine Name', y='Ratings Average', hue='Grape')
+    plt.xlabel('Wine Name')
+    plt.ylabel('Ratings Average')
+    plt.title('Top Rated Wines by Grape')
+    plt.xticks(rotation=90)
+    st.pyplot(plt)
+
+    rating_4_5 = st.button('click to see ratings from 4 to 5 specifically')
+
+    if rating_4_5:
+        plt.ylim(4, 5)
+        st.pyplot(plt)
+
 def barchart_for_countries_WinesVintageCount(cursor):
     # not from questions - new findings
-
     st.header('Wines, Vintage and total wines count of each countries')
 
     list_of_countries = []
@@ -145,48 +185,6 @@ def barchart_for_countries_WinesVintageCount(cursor):
         st.pyplot(plt)
     elif low_count_20:
         plt.ylim(0,20)
-        st.pyplot(plt)
-
-def ratings_of_top15wines(cursor):
-    # question 3 - second part - ratings of top 15 wines (of top 3 grapes each)
-    q1 = '''SELECT name , ratings_average
-       FROM Cabernet_Sauvignon
-       ORDER BY ratings_average DESC
-       LIMIT 5'''
-    q2 = '''SELECT name , ratings_average
-        FROM Chardonnay
-        ORDER BY ratings_average DESC
-        LIMIT 5'''
-    q3 = '''SELECT name , ratings_average
-        FROM Pinot_Noir
-        ORDER BY ratings_average DESC
-        LIMIT 5'''
-
-    queries = [q1, q2, q3]
-    grape_names = ['Cabernet Sauvignon', 'Chardonnay', 'Pinot Noir']
-
-    dataframes = []
-
-    for i, query in enumerate(queries):
-        results = cursor.execute(query).fetchall()
-        df = pd.DataFrame(results, columns=['Wine Name', 'Ratings Average'])
-        df['Grape'] = grape_names[i]
-        dataframes.append(df)
-
-    # Combine the DataFrames into a single DataFrame
-    combined_df = pd.concat(dataframes, ignore_index=True)
-
-    sns.barplot(data=combined_df, x='Wine Name', y='Ratings Average', hue='Grape')
-    plt.xlabel('Wine Name')
-    plt.ylabel('Ratings Average')
-    plt.title('Top Rated Wines by Grape')
-    plt.xticks(rotation=90)
-    st.pyplot(plt)
-
-    rating_4_5 = st.button('click to see ratings from 4 to 5 specifically')
-
-    if rating_4_5:
-        plt.ylim(4, 5)
         st.pyplot(plt)
 
 def marketing_budget(engine):
