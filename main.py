@@ -2,6 +2,7 @@ import src.queries as queries
 import streamlit as st
 import sqlite3
 from sqlalchemy import create_engine
+
 from sqlalchemy.orm import sessionmaker, scoped_session, declarative_base
 
 # declarative base class
@@ -40,6 +41,9 @@ elif choice == 'Marketing budget':
 elif choice == 'Wines per flavor':
     queries.wine_flavor(engine)
 
-# closing database
+# closing vivino_new.db connections
 cursor.close()
 connection.close()
+
+# closing vivino.db session
+session.close()
