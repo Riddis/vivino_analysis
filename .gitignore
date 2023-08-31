@@ -1,7 +1,6 @@
 vivino_env/
 __pychache__
 data/vivino.db
-data/vivino_new.db
 .venv
 question_3/vivino.db
 
