@@ -90,9 +90,9 @@ The project consists of three main parts:
 
 ## 🏁 Completion
 **Team**: 
-- [Mythili Palanisamy](https://www.linkedin.com/in/mythili-palanisamy-492147159)
-- [Oleksandr Tsepukh](https://www.linkedin.com/in/oleksandr-tsepukh-ba4985279)
-- [Sam Hoste](https://www.linkedin.com/in/sam-hoste-15610945)
+- Mythili Palanisamy [LinkedIn](https://www.linkedin.com/in/mythili-palanisamy-492147159)
+-  Oleksandr Tsepukh [LinkedIn](https://www.linkedin.com/in/oleksandr-tsepukh-ba4985279)
+- Sam Hoste [LinkedIn](https://www.linkedin.com/in/sam-hoste-15610945) 
 
 **Repository**: Price_prediction
 
