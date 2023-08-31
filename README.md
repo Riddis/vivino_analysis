@@ -106,4 +106,3 @@ The project consists of three main parts:
 <a name="acknowledgements"></a>
 ## 🙏 Acknowledgements
 We would like to thank BeCode for providing us with this opportunity to work on this project. We would also like to thank our coaches and mentors for their guidance and support. Finally, we would like to thank our fellow learners for their feedback and collaboration.
-
