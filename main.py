@@ -26,7 +26,9 @@ choice = st.sidebar.radio('Choose one to visualise',['Contents',
                                             'Total wines count of each countries', 
                                             'Ratings of top 15 wines',
                                             'Marketing budget', 
-                                            'Wines per flavor', 'The End'
+                                            'Wines per flavor',
+                                            'Tableau test', 
+                                            'The End'
                                             ])
 st.write(" ")
 st.write(" ")
@@ -47,6 +49,8 @@ elif choice == 'Marketing budget':
     queries.marketing_budget(engine)
 elif choice == 'Wines per flavor':
     queries.wine_flavor(engine)
+elif choice == 'Tableau test':
+    queries.tableau()
 elif choice == 'The End':
     st.write('# Thank you for your time')
     value = st.slider('How much do you like wine', 0, 100)
@@ -72,25 +76,3 @@ connection.close()
 
 # closing vivino.db session
 session.close()
-=======
-connection = sqlite3.connect('./data/vivino.db')
-cursor = connection.cursor()
-
-st.set_page_config(page_title = 'vivino', page_icon = '🍷')
-st.title ('Visualisation on Vivino')
-choice = st.radio('Choose one to visualise',[
-                                            'Usage of top 5 grapes accross countries',
-                                            'Wines, Vintage and total wines count of each countries', 
-                                            'Marketing budget', 
-                                            'Wines per flavor'
-                                            ])
-st.write(" ")
-st.write(" ")
-if choice == 'Usage of top 5 grapes accross countries':
-    queries.heatmap_for_grape(cursor)
-elif choice == 'Wines, Vintage and total wines count of each countries':
-    queries.barchart_for_countries_WinesVintageCount(cursor)
-elif choice == 'Marketing budget':
-    queries.marketing_budget(engine)
-elif choice == 'Wines per flavor':
-    queries.wine_flavor(engine)
