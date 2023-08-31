@@ -22,11 +22,6 @@ This project, part of the AI Bootcamp in Gent at BeCode.org, aims to analyze win
 * This project is based on Data aggregation and Visualisation of 'Wiwinio', active wine industry.
 * The company wants to have a better understanding of the wine's market.
 
-This project is based on the following data sources:
-
-- A database of wines, ratings, reviews, and keywords from vivino.com
-- A dataset of wine prices scraped from wine-searcher.com
-
 The project consists of three main parts:
 
 - Data engineering: Extracting, transforming, and loading the data from different sources into a SQL database. Performing data cleaning, validation, and quality checks. Creating tables, views, and queries to support the analysis.
