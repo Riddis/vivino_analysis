@@ -12,6 +12,6 @@ collective opinions of previous buyers.
  it makes sense to highlight the more affordable option first. 
  This can be attractive to consumers looking for good value.
 
-Ratings Count > 100: By filtering wines that have more than 100 ratings, 
+Ratings Count > 30: By filtering wines that have more than 100 ratings, 
 we're focusing on wines that have a significant amount of feedback. 
 This reduces the chance of highlighting wines that might have high ratings due to a small number of potentially biased reviews.
