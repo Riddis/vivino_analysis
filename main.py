@@ -23,9 +23,7 @@ st.set_page_config(page_title = 'vivino', page_icon = '🍷')
 st.title ('')
 
 # Save viewport width to session state
-st.session_state["viewport_width"] = streamlit_js_eval(
-    js_expressions="window.innerWidth", key="ViewportWidth"
-)
+st.session_state["viewport_width"] = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 
 choice = st.sidebar.radio('Choose one to visualise',['Contents',
                                             'Top 5 grapes in each countries',
@@ -43,7 +41,7 @@ st.write(" ")
 st.write(" ")
 
 # Calculate width and height based on viewport width
-w = st.session_state["viewport_width"]*0.7
+w = st.session_state["viewport_width"]*0.65
 h = w /3 * 5
 
 if choice == 'Contents':
