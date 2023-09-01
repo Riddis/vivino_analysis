@@ -152,19 +152,17 @@ def barchart_for_countries_WinesVintageCount(cursor):
         for row in cursor.execute(query1):
             vintage_count = row[0]
 
-        data.append([country, wine_count, vintage_count, wine_count + vintage_count])
+        data.append([country, wine_count, vintage_count])
 
-    df = pd.DataFrame(data, columns=['Country', 'Wine Count', 'Vintage Count', 'Total Count'])
+    df = pd.DataFrame(data, columns=['Country', 'Wine Count', 'Vintage Count'])
 
     countries = df['Country']
     wine_counts = df['Wine Count']
     vintage_counts = df['Vintage Count']
-    total_counts = df['Total Count']
 
     plt.figure(figsize=(10, 6))
     plt.bar(countries, wine_counts, label='Wine Count')
     plt.bar(countries, vintage_counts, bottom=wine_counts, label='Vintage Count')
-    plt.bar(countries, total_counts, bottom=[i+j for i,j in zip(wine_counts, vintage_counts)], label='Total Count')
 
     plt.xlabel('Country')
     plt.ylabel('Count')
