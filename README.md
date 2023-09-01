@@ -75,7 +75,7 @@ The project consists of three main parts:
 [![Tableau](https://img.shields.io/badge/Tableau-orange)](https://www.tableau.com/)
 
 - Clone this repository.
-- Install the required modules using `pip install <module name>`.
+- Install the required modules using `pip install requirements.txt`.
 
 <a name="results"></a>
 ## 📊 Results 
