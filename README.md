@@ -87,7 +87,7 @@ The project consists of three main parts:
 <a name="usage"></a>
 ## 🎮 Usage
 1. Navigate to the repository's directory in your terminal.
-2. Execute 'streamlit run c:/PATHTOFILE/main.py'
+2. Execute 'streamlit run `c:/PATHTOFILE/main.py`
 
 <a name="completion"></a>
 ## 🏁 Completion
