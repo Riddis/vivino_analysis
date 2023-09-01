@@ -1,5 +1,6 @@
 vivino_env/
 __pychache__
+src/__pychache__
 data/vivino.db
 .venv
 question_3/vivino.db
