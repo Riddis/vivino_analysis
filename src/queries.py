@@ -8,7 +8,7 @@ from matplotlib.ticker import ScalarFormatter, MaxNLocator
 import streamlit.components.v1 as components
 
 def heatmap_for_grape(cursor):
-    st.header('Usage of top 5 grapes accross countries')
+    st.header('Top 5 grapes accross countries')
 
     queries = {
     'Cabernet Sauvignon': """
@@ -117,7 +117,7 @@ def ratings_of_top15wines(cursor):
 
 def barchart_for_countries_WinesVintageCount(cursor):
     # not from questions - new findings
-    st.header('Wines, Vintage and total wines count of each countries')
+    st.header('Wines and Vintage count of each countries')
 
     list_of_countries = []
     for x in cursor.execute('''SELECT name FROM countries'''):
